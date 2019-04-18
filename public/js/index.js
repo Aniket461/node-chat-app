@@ -4,13 +4,6 @@ var socket = io();
 
 		console.log("Connected to server");
 
-		socket.emit('createMessage', {
-
-			from: 'Reciver',
-			text: 'Hello Aniket'
-
-		});
-
 	});
 
 	socket.on('disconnect', function(){
