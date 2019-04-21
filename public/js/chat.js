@@ -114,7 +114,6 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageheight>= scrollHeigh
 
 		socket.emit('createMessage',{
 
-			from: 'User',
 			text: messagebox.val()
 
 		}, function(){
