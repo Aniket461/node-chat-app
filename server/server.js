@@ -30,7 +30,7 @@ socket.on('createMessage',function(message, callback){
 
 console.log("the create message", message);
 io.emit('newMessage',generateMessage(message.from, message.text));
-callback('This is from server');
+callback();
 
 
 });
