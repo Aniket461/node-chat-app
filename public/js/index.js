@@ -13,10 +13,10 @@ var socket = io();
 	});
 
 	socket.on('newMessage', function(message){
-
+		var formattedTime = moment(message.createdAt).format('LT');
 		console.log("The new message is",message);
 		var li = jQuery('<li></li>');
-		li.text(`${message.from}: ${message.text}`);
+		li.text(`${message.from} ${formattedTime}: ${message.text}`);
 
 
 		jQuery('#messages').append(li);
@@ -26,11 +26,11 @@ var socket = io();
 
 	socket.on('newLocationMessage', function(message){
 
-
+		var formattedTime = moment(message.createdAt).format('LT');
 		var li = jQuery('<li></li>');
 		var a = jQuery('<a target="_blank">My current location</a>');
 
-		li.text(`${message.from}: `);
+		li.text(`${message.from} ${formattedTime}: `);
 		a.attr('href', message.url);
 
 		li.append(a);
