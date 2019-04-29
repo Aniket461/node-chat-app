@@ -22,4 +22,19 @@ createdAt: moment().valueOf()
 
 };
 
-module.exports = {generateMessage, generateLocationMessage};
+
+var generateImageMessage = (from, image) =>{
+
+return {
+
+from,
+image,
+createdAt: moment().valueOf()
+
+};
+
+};
+
+
+
+module.exports = {generateMessage, generateLocationMessage, generateImageMessage};

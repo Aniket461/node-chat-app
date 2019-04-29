@@ -24,7 +24,10 @@
 <form id="message-form">
 	<input type="text" name="message" placeholder="Message" autofocus autocomplete="off">
 	<button>Send</button>
+
 </form>
+<button><input type="file" name="upload-file"  id="imagefile"></button>
+
 
 <button id="send-location">Send Location</button>
 
@@ -60,6 +63,22 @@
 <p><a href="{{url}}" target="_blank">
 My current location
 </a></p>
+</div>
+</li>
+
+</script>
+
+
+<script type="text/template" id="image-message-template">
+	
+<li class="message">
+
+<div class="message__title">
+<h4>{{from}}</h4>
+<span>{{createdAt}}</span>
+</div>
+<div class="message__body">
+<p><img src="{{image}}" /></p>
 </div>
 </li>
 

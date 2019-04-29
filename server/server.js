@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const {generateMessage,generateLocationMessage } = require('./utils/message');
+const {generateMessage,generateLocationMessage,generateImageMessage  } = require('./utils/message');
 const {isRealString} = require('./utils/validation');
 const {Users} = require('./utils/users');
 
@@ -67,6 +67,19 @@ callback();
 
 
 });
+
+
+socket.on('userImage', function(image){
+
+var user = users.getUser(socket.id);
+console.log(image);
+if(user){
+io.to(user.room).emit('addimage', generateImageMessage(user.name, image));
+}
+
+
+});
+
 
 
 socket.on('createLocationMessage',function(coords){

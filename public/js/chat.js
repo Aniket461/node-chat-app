@@ -154,3 +154,42 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageheight>= scrollHeigh
 
 	});
 
+
+socket.on('addimage', function(message){
+
+console.log(message);
+
+var formattedTime = moment(message.createdAt).format('LT');
+		var template = jQuery('#image-message-template').html();
+		var html = Mustache.render(template, {
+
+			image: message.image,
+			from: message.from,
+			createdAt: formattedTime
+		});
+
+		jQuery('#messages').append(html);
+		scrollToBottom();
+
+});
+
+
+
+jQuery("#imagefile").on('change', function(e){
+
+
+var file = e.originalEvent.target.files[0];
+
+var reader = new FileReader();
+reader.onload = function(evt){
+
+
+socket.emit('userImage', evt.target.result);
+
+
+
+};
+
+reader.readAsDataURL(file);
+
+});
