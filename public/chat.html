@@ -8,6 +8,9 @@
 <meta charset="utf-8">
 <title>Chat | ChatApp</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/emoji.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/css/emojionearea.min.css">
 </head>
 
 <body class="chat">
@@ -22,11 +25,13 @@
 
 <div class="chat__footer">
 <form id="message-form">
-	<input type="text" name="message" placeholder="Message" autofocus autocomplete="off">
+
+	<input type="text" name="message" id="example1" placeholder="Message" autofocus autocomplete="off" style="display: none" >
+	
 	<button>Send</button>
 
 </form>
-<button><input type="file" name="upload-file"  id="imagefile"></button>
+<button ><input  type="file" name="upload-file"  id="imagefile"></button>
 
 
 <button id="send-location">Send Location</button>
@@ -86,13 +91,25 @@ My current location
 
 
 
+
 <script type="text/javascript" src="/js/libs/jquery.js"></script>
 <script type="text/javascript" src="/js/libs/moment.js"></script>
 <script type="text/javascript" src="/js/libs/mustache.js"></script>
 <script type="text/javascript" src="/js/libs/deparam.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/js/chat.js"></script>
+<script type="text/javascript" src="/js/libs/emojionearea.min.js"></script>
+<script type="text/javascript">
+  
+    $("#example1").emojioneArea({
 
+    	pickerPosition: "top",
+    	inline: true
+
+
+    });
+  
+</script>    
 </body>
 
 </html>

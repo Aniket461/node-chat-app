@@ -119,6 +119,7 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageheight>= scrollHeigh
 		}, function(){
 
 			messagebox.val('')
+			jQuery(".emojionearea-editor").empty();
 
 		});
 
