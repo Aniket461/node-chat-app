@@ -69,7 +69,7 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageheight>= scrollHeigh
 
 		jQuery('#messages').append(html);
 		scrollToBottom();
-		
+
 		/*console.log("The new message is",message);
 		var li = jQuery('<li></li>');
 		li.text(`${message.from} ${formattedTime}: ${message.text}`);
@@ -93,7 +93,7 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageheight>= scrollHeigh
 
 		jQuery('#messages').append(html);
 		scrollToBottom();
-		
+
 		/*var li = jQuery('<li></li>');
 		var a = jQuery('<a target="_blank">My current location</a>');
 
@@ -109,7 +109,7 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageheight>= scrollHeigh
 
 		e.preventDefault();
 
-		var messagebox = jQuery('[name=message]'); 
+		var messagebox = jQuery('[name=message]');
 
 
 		socket.emit('createMessage',{
@@ -192,5 +192,40 @@ socket.emit('userImage', evt.target.result);
 };
 
 reader.readAsDataURL(file);
+
+});
+
+
+//speech to text
+
+const btn = document.querySelector('.talk');
+//const content = document.querySelector('.content');
+const input = document.querySelector('.intext');
+
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition ;
+
+const recognition = new SpeechRecognition();
+
+recognition.onstart = function(){
+  console.log("Voice is activated, u can speak");
+
+};
+
+recognition.onresult = function(event){
+
+  const current = event.resultIndex;
+  const transcript = event.results[current][0].transcript;
+  //content.textContent = transcript;
+  input.value = transcript;
+
+};
+
+//add listener to the button
+
+btn.addEventListener('click', () => {
+
+recognition.start();
+
 
 });
