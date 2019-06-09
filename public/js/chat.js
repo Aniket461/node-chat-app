@@ -201,6 +201,7 @@ reader.readAsDataURL(file);
 const btn = document.querySelector('.talk');
 //const content = document.querySelector('.content');
 const input = document.querySelector('.intext');
+var recordButton = jQuery('#Speech');
 
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition ;
@@ -217,6 +218,8 @@ recognition.onresult = function(event){
   const current = event.resultIndex;
   const transcript = event.results[current][0].transcript;
   //content.textContent = transcript;
+	recordButton.removeAttr('disabled').text('Record');
+
   input.value = transcript;
 
 };
@@ -224,6 +227,9 @@ recognition.onresult = function(event){
 //add listener to the button
 
 btn.addEventListener('click', () => {
+
+	recordButton.attr('disabled', 'disabled').text('Recording ...');
+
 
 recognition.start();
 
